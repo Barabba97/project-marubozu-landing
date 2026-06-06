@@ -10,7 +10,7 @@ Marubozu is a web platform for active traders who want to journal their trades, 
 
 - **Trade Journal**: Rich-text journal with checklist, mood tracking, timeframe tags, and multi-execution support (entries, scale-ins, partial take profits).
 - **Analytics Dashboard**: Win rate, profit factor, equity curve, drawdown, average R:R — behavior linked to outcomes.
-- **Multi-Exchange Wallet**: Track balance and allocation across Binance, KuCoin, Bitget, MEXC, Bitnuix and more.
+- **Multi-Exchange Wallet**: Two wallet types supported. **Crypto exchange wallets** connect to Binance, KuCoin, Bitget, MEXC or Bitnuix — these exchanges are also used for pair retrieval and are the target for future automatic trade import features. **Virtual wallets** can represent funds held on any platform: traditional brokers (Trade Republic, XTB, etc.), banks, or any other account. For virtual wallets, pair data is sourced from Tiingo, Metal Sentinel, ExchangeRate-API, FRED and other providers depending on asset class. Marubozu is a tracker — no order execution is possible from within the platform.
 - **Macro Dashboard**: Economic cycle detection, intermarket correlations, and money flow by asset class.
 - **Personal Library & Docs**: Research, macro thesis, and past studies organized in folders; quick notes always one click away.
 - **Custom Checklists**: Pre-trade checklists applied to every trade to enforce discipline under pressure.
@@ -24,7 +24,7 @@ Free 7-day trial. Subscription required after trial.
 
 ## Target Users
 
-Active retail traders in crypto, forex, and equities who want a structured system to improve consistency, discipline, and edge over time.
+Active retail traders in crypto, forex, and equities — including traders using crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitnuix) and traditional brokers (Trade Republic, XTB, etc.) — who want a unified system to track all positions, improve consistency, discipline, and edge over time. Marubozu is a tracker: no order execution is possible from within the platform.
 
 ## Technology
 
