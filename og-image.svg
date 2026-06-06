@@ -1,0 +1,42 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f0f0f"/>
+
+  <!-- Subtle noise overlay via pattern -->
+  <rect width="1200" height="630" fill="url(#noise)" opacity="0.03"/>
+
+  <!-- Orange accent line top -->
+  <rect x="0" y="0" width="1200" height="4" fill="#e95420"/>
+
+  <!-- Logo group — centered -->
+  <g transform="translate(290, 215)">
+    <!-- Red bearish candle -->
+    <rect x="10" y="25" width="50" height="100" fill="#B2322E"/>
+    <line x1="35" y1="125" x2="35" y2="155" stroke="#B2322E" stroke-width="6"/>
+
+    <!-- Green bullish candle -->
+    <rect x="80" y="5" width="50" height="130" fill="#2E7D32"/>
+    <line x1="105" y1="0" x2="105" y2="5" stroke="#2E7D32" stroke-width="6"/>
+
+    <!-- MARUBOZU wordmark -->
+    <text x="155" y="100"
+      font-family="'Barlow Condensed', 'Arial Narrow', sans-serif"
+      font-weight="800"
+      font-size="110"
+      letter-spacing="4"
+      fill="#e8e6e3">MARUBOZU</text>
+
+    <!-- Two-tone underline -->
+    <line x1="155" y1="135" x2="430" y2="135" stroke="#B2322E" stroke-width="6"/>
+    <line x1="430" y1="135" x2="740" y2="135" stroke="#2E7D32" stroke-width="6"/>
+  </g>
+
+  <!-- Tagline -->
+  <text x="600" y="490"
+    font-family="'DM Sans', 'Arial', sans-serif"
+    font-weight="300"
+    font-size="32"
+    letter-spacing="6"
+    fill="#888580"
+    text-anchor="middle">PROFIT FOLLOWS DISCIPLINE</text>
+</svg>
