@@ -1,0 +1,35 @@
+# Marubozu
+
+> The next generation trading hub. Profit Follows Discipline.
+
+## What is Marubozu?
+
+Marubozu is a web platform for active traders who want to journal their trades, track performance, manage wallet allocations across exchanges, and stay macro-aware — all in one place.
+
+## Core Features
+
+- **Trade Journal**: Rich-text journal with checklist, mood tracking, timeframe tags, and multi-execution support (entries, scale-ins, partial take profits).
+- **Analytics Dashboard**: Win rate, profit factor, equity curve, drawdown, average R:R — behavior linked to outcomes.
+- **Multi-Exchange Wallet**: Track balance and allocation across Binance, KuCoin, Bitget, MEXC, Bitnuix and more.
+- **Macro Dashboard**: Economic cycle detection, intermarket correlations, and money flow by asset class.
+- **Personal Library & Docs**: Research, macro thesis, and past studies organized in folders; quick notes always one click away.
+- **Custom Checklists**: Pre-trade checklists applied to every trade to enforce discipline under pressure.
+- **Discipline & Streaks** *(coming soon)*: Daily journaling streaks and rule compliance tracking.
+- **Economic Calendar** *(coming soon)*: CPI, FOMC, NFP correlated with trade entries.
+- **AI Journal Assistant** *(coming soon)*: Answers questions from your own trading history.
+
+## Pricing
+
+Free 7-day trial. Subscription required after trial.
+
+## Target Users
+
+Active retail traders in crypto, forex, and equities who want a structured system to improve consistency, discipline, and edge over time.
+
+## Technology
+
+Web application (SaaS). Works in any modern browser. No installation required.
+
+## URL
+
+https://marubozu.trade/
