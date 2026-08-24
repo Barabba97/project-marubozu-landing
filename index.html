@@ -2397,18 +2397,59 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Waitlist
+        //
+        // Il form annunciava il successo comunque: non guardava la risposta, quindi un
+        // indirizzo rifiutato, un errore di rete o un 429 finivano tutti con "Check your
+        // inbox" e l'utente restava ad aspettare una email che non sarebbe mai arrivata.
+        // Ora si annuncia il successo solo quando c'è stato.
         async function signup(inputId, successId, formId) {
-            const email = document.getElementById(inputId).value;
+            const input = document.getElementById(inputId);
+            const email = input.value;
             if (!email || !email.includes('@')) return;
 
-            await fetch('https://api.marubozu.trade/api/waitlist', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, source: 'landing' })
-            });
+            const button = document.querySelector(`#${formId} button`);
+            if (button) { button.disabled = true; }
 
-            document.getElementById(formId).style.display = 'none';
-            document.getElementById(successId).classList.add('show');
+            try {
+                const res = await fetch('https://api.marubozu.trade/api/waitlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, source: 'landing' })
+                });
+
+                if (res.ok) {
+                    document.getElementById(formId).style.display = 'none';
+                    document.getElementById(successId).classList.add('show');
+                    return;
+                }
+
+                if (res.status === 429) {
+                    // L'iscrizione è limitata per non esaurire la quota di invio email,
+                    // che è condivisa con la verifica account e il reset password.
+                    signupError(formId, 'Too many attempts. Please try again in a few minutes.');
+                } else if (res.status === 400) {
+                    signupError(formId, 'That email address does not look valid.');
+                } else {
+                    signupError(formId, 'Something went wrong. Please try again later.');
+                }
+            } catch (e) {
+                signupError(formId, 'Could not reach the server. Please check your connection.');
+            } finally {
+                if (button) { button.disabled = false; }
+            }
+        }
+
+        function signupError(formId, message) {
+            const form = document.getElementById(formId);
+            let box = form.parentElement.querySelector('.signup-error');
+            if (!box) {
+                box = document.createElement('p');
+                box.className = 'signup-error';
+                box.style.cssText = 'color:#e5534b;font-size:14px;margin:10px 0 0';
+                box.setAttribute('role', 'status');
+                form.insertAdjacentElement('afterend', box);
+            }
+            box.textContent = message;
         }
         document.getElementById('email1').addEventListener('keydown', e => { if (e.key === 'Enter') signup('email1', 'success1', 'form1'); });
         document.getElementById('email2').addEventListener('keydown', e => { if (e.key === 'Enter') signup('email2', 'success2', 'form2'); });
