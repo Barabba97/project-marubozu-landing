@@ -1579,6 +1579,32 @@
         .founders-savings strong {
             color: var(--orange);
         }
+
+        /* Posti gratuiti della beta (C11).
+           Nasce nascosto e lo resta finché il server non conferma quanti ne restano: un
+           numero scritto qui a mano sarebbe la promessa pubblica che smette di combaciare
+           col codice, cioè esattamente il difetto costato sette settimane in A8. */
+        .beta-seats {
+            display: none;
+            max-width: 680px;
+            margin: 22px auto 0;
+            padding: 12px 18px;
+            text-align: center;
+            font-size: 0.86rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, .82);
+            border: 1px solid rgba(233, 84, 32, .35);
+            border-radius: 12px;
+            background: rgba(233, 84, 32, .07);
+        }
+
+        .beta-seats.show {
+            display: block;
+        }
+
+        .beta-seats strong {
+            color: var(--orange);
+        }
  
         /* Countdown */
         .countdown-wrap {
@@ -2149,6 +2175,8 @@
                 Everyone joining the waitlist will get exclusive access to our Founding Member plan before public launch.
             </p>
 
+            <p id="beta-seats" class="beta-seats" role="status"></p>
+
         </div>
 
         <!-- SINGLE CARD -->
@@ -2438,6 +2466,47 @@
                 if (button) { button.disabled = false; }
             }
         }
+
+        // Posti gratuiti della beta (C11)
+        //
+        // I primi cinque invitati dalla waitlist hanno dodici mesi di Pro gratuiti, e poi
+        // atterrano sul prezzo founding. È una promessa pubblica con un numero dentro, e
+        // questo blocco esiste per una sola ragione: che il numero smetta da solo.
+        //
+        // Regola: si annuncia SOLO ciò che il server conferma. Nessuna risposta, risposta
+        // illeggibile, o zero posti residui => il blocco resta invisibile. Preferire il
+        // silenzio a un numero non verificato è il rimedio diretto ad A8, dove il codice e
+        // la landing hanno divergiuto per sette settimane senza che nulla lo segnalasse.
+        async function mostraPostiBeta() {
+            const box = document.getElementById('beta-seats');
+            if (!box) return;
+
+            try {
+                const res = await fetch('https://api.marubozu.trade/api/waitlist/beta-seats');
+                if (!res.ok) return;
+
+                const dati = await res.json();
+                const residui = Number(dati.remaining);
+                const totali  = Number(dati.total);
+                if (!Number.isFinite(residui) || residui <= 0) return;
+
+                // Con nessun posto ancora assegnato — lo stato in cui la pagina passerà la
+                // maggior parte del tempo — «5 of 5 left» si legge male: il conteggio ha
+                // senso solo dopo che qualcuno ne ha preso uno.
+                const titolo = (residui === totali)
+                    ? 'All ' + totali + ' free beta seats are open.'
+                    : residui + ' of ' + totali + ' free beta seats left.';
+
+                box.innerHTML =
+                    '<strong>' + titolo + '</strong><br>' +
+                    'The first ' + totali + ' members we invite from the waitlist get 12 months of Pro ' +
+                    'for free. When the free year ends, the founding price of €14/month applies.';
+                box.classList.add('show');
+            } catch (e) {
+                // Silenzio deliberato: senza conferma non si annuncia nulla.
+            }
+        }
+        mostraPostiBeta();
 
         function signupError(formId, message) {
             const form = document.getElementById(formId);
