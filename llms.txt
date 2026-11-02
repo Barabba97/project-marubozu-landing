@@ -15,7 +15,7 @@ Marubozu is a web platform for active traders who want to journal their trades, 
 - **Personal Library & Docs**: Research, macro thesis, and past studies organized in folders; quick notes always one click away.
 - **Custom Checklists**: Pre-trade checklists applied to every trade to enforce discipline under pressure.
 - **Discipline & Streaks** *(coming soon)*: Daily journaling streaks and rule compliance tracking.
-- **Economic Calendar** *(coming soon)*: CPI, FOMC, NFP correlated with trade entries.
+- **Economic Calendar**: CPI, FOMC, NFP and other macro releases; correlation with trade entries *(coming soon)*.
 - **AI Journal Assistant** *(coming soon)*: Answers questions from your own trading history.
 - **TradingView alert bridge** *(coming soon)*: TradingView alerts logged as notes in your journal, so you can review the setups you saw and how you traded them.
 

@@ -84,7 +84,7 @@
                 "name": "Marubozu",
                 "alternateName": "Marubozu Trading Hub",
                 "url": "https://marubozu.trade/",
-                "description": "Marubozu is a web-based trading journal and performance analytics platform for active retail traders in crypto, forex, equities and futures. It includes a trade journal with checklist and mood tracking, behavioral analytics dashboard, wallet tracker (crypto exchange wallets for Binance, KuCoin, Bitget, MEXC, Bitnuix and virtual wallets for traditional brokers such as Trade Republic or XTB), macro economic dashboard, and discipline system with journaling streaks. Marubozu is a tracker — no trade execution from within the platform.",
+                "description": "Marubozu is a web-based trading journal and performance analytics platform for active retail traders in crypto, forex, equities and futures. It includes a trade journal with checklist and mood tracking, behavioral analytics dashboard, wallet tracker (crypto exchange wallets for Binance, KuCoin, Bitget, MEXC, Bitunix and virtual wallets for traditional brokers such as Trade Republic or XTB), macro economic dashboard, and discipline system with journaling streaks (coming soon). Marubozu is a tracker — no trade execution from within the platform.",
                 "applicationCategory": "FinanceApplication",
                 "applicationSubCategory": "Trading Journal",
                 "operatingSystem": "Web, Any modern browser",
@@ -117,12 +117,12 @@
                     "Trading Journal with rich-text editor, checklist, mood tracking and timeframe tags",
                     "Multiple trade executions per journal entry — entries, scale-ins, partial take profits",
                     "Analytics Dashboard with win rate, profit factor, equity curve, drawdown and R:R",
-                    "Crypto Exchange Wallets for Binance, KuCoin, Bitget, MEXC and Bitnuix; Virtual Wallets for traditional brokers (Trade Republic, XTB, etc.) with pair data from Tiingo and other providers",
+                    "Crypto Exchange Wallets for Binance, KuCoin, Bitget, MEXC and Bitunix; Virtual Wallets for traditional brokers (Trade Republic, XTB, etc.) with pair data from Tiingo and other providers",
                     "Macro Dashboard with economic cycle detection, intermarket correlations, and institutional COT reports tracking (Commercials vs. Non-Commercials net positioning)",
                     "Custom Pre-Trade Checklists",
                     "Personal Library and Notes for research and macro thesis",
                     "Discipline and Streak System (coming soon)",
-                    "Economic Calendar correlated to trade entries (coming soon)",
+                    "Economic Calendar with CPI, FOMC, NFP and other macro releases; correlation with trade entries (coming soon)",
                     "AI Journal Assistant trained on personal trading history (coming soon)"
                 ],
                 "screenshot": [
@@ -166,7 +166,7 @@
                         "name": "How does Marubozu compare to Tradervue or TraderSync?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Unlike Tradervue or TraderSync which focus primarily on trade logging and statistics, Marubozu adds a macro dashboard for economic cycle context, a multi-exchange wallet tracker for crypto traders, and a behavioral discipline system with checklists, streaks and compliance tracking. It is designed as a complete trading hub rather than a standalone journal."
+                            "text": "Unlike Tradervue or TraderSync which focus primarily on trade logging and statistics, Marubozu adds a macro dashboard for economic cycle context, a multi-exchange wallet tracker for crypto traders, and a behavioral discipline system built on pre-trade checklists, with streaks and compliance tracking coming soon. It is designed as a complete trading hub rather than a standalone journal."
                         }
                     },
                     {
@@ -174,7 +174,7 @@
                         "name": "What exchanges does Marubozu integrate with?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Marubozu supports two wallet types. Crypto exchange wallets connect to Binance, KuCoin, Bitget, MEXC or Bitnuix for pair data and balance tracking. Virtual wallets can represent funds held anywhere — traditional brokers like Trade Republic or XTB, or any other account — with pair data sourced from Tiingo and other providers. Marubozu is a tracker: no order execution is possible from within the platform. Future updates will include automatic import of open positions from connected crypto exchanges."
+                            "text": "Marubozu supports two wallet types. Crypto exchange wallets connect to Binance, KuCoin, Bitget, MEXC or Bitunix for pair data and balance tracking. Virtual wallets can represent funds held anywhere — traditional brokers like Trade Republic or XTB, or any other account — with pair data sourced from Tiingo and other providers. Marubozu is a tracker: no order execution is possible from within the platform. Future updates will include automatic import of open positions from connected crypto exchanges."
                         }
                     },
                     {
@@ -1812,7 +1812,7 @@
             <div class="success-msg" id="success1">
                 <span>✓</span> Check your inbox — we sent you a confirmation email. Click the link to secure your spot.
             </div>
-            <p class="waitlist-note">Free during beta · No credit card · Crypto, Forex & Stocks</p>
+            <p class="waitlist-note">7-day free trial · No credit card · Crypto, Forex & Stocks</p>
         </div>
 
         <div class="trusted">
@@ -1994,7 +1994,7 @@
             <div class="feature-card">
                 <div class="feature-icon">💼</div>
                 <h3>Multi-Exchange Wallet</h3>
-                <p>Link wallets to crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitnuix) or create virtual wallets for traditional brokers like Trade Republic and XTB. Track balance, allocation and real-time PnL across every platform in one dashboard. Marubozu is a tracker — no order execution.</p>
+                <p>Link wallets to crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitunix) or create virtual wallets for traditional brokers like Trade Republic and XTB. Track balance, allocation and real-time PnL across every platform in one dashboard. Marubozu is a tracker — no order execution.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">🌐</div>
@@ -2022,8 +2022,9 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📅</div>
-                <h3>Economic Calendar <span class="badge-soon">Soon</span></h3>
-                <p>CPI, FOMC, NFP correlated with your trade entries. Never get caught off-guard by a macro event again.
+                <h3>Economic Calendar</h3>
+                <p>CPI, FOMC, NFP and other macro releases. Never get caught off-guard by a macro event again.
+                    Correlation with your trade entries (coming soon).
                 </p>
             </div>
             <div class="feature-card">
@@ -2133,12 +2134,12 @@
             <ul class="discipline-list">
                 <li>
                     <div class="check-icon">✓</div>
-                    <p><strong>Daily streaks</strong> reward consistent journaling. Break the streak, and you'll feel it
+                    <p><strong>Daily streaks</strong> <span class="badge-soon">Soon</span> reward consistent journaling. Break the streak, and you'll feel it
                         — that friction is the point.</p>
                 </li>
                 <li>
                     <div class="check-icon">✓</div>
-                    <p><strong>Rule compliance tracking</strong> shows if you're actually following your system, or just
+                    <p><strong>Rule compliance tracking</strong> <span class="badge-soon">Soon</span> shows if you're actually following your system, or just
                         following your emotions.</p>
                 </li>
                 <li>
@@ -2148,7 +2149,7 @@
                 </li>
                 <li>
                     <div class="check-icon">✓</div>
-                    <p><strong>Milestone badges</strong> mark habits worth celebrating. 30 days of journaling is an
+                    <p><strong>Milestone badges</strong> <span class="badge-soon">Soon</span> mark habits worth celebrating. 30 days of journaling is an
                         achievement. Marubozu remembers it.</p>
                 </li>
             </ul>
@@ -2220,9 +2221,9 @@
                     <li><span class="feat-icon">✓</span> Full trading journal</li>
                     <li><span class="feat-icon">✓</span> Analytics dashboard</li>
                     <li><span class="feat-icon">✓</span> Macro dashboard</li>
-                    <li><span class="feat-icon">✓</span> AI journal assistant</li>
+                    <li><span class="feat-icon">✓</span> AI journal assistant (coming soon)</li>
                     <li><span class="feat-icon">✓</span> Economic calendar</li>
-                    <li><span class="feat-icon">✓</span> Discipline & streak system</li>
+                    <li><span class="feat-icon">✓</span> Discipline & streak system (coming soon)</li>
                     <li><span class="feat-icon">✓</span> Behavioral analytics</li>
                 </ul>
 
@@ -2291,7 +2292,7 @@
                     <span class="faq-icon" style="color:var(--orange); font-size:1.2rem; margin-left:16px; flex-shrink:0;">+</span>
                 </summary>
                 <p style="margin-top:16px; font-size:0.9rem; color:var(--muted); line-height:1.7;">
-                    Marubozu supports two wallet types. <strong style="color:var(--text)">Crypto exchange wallets</strong> connect to Binance, KuCoin, Bitget, MEXC or Bitnuix for pair data and balance tracking. <strong style="color:var(--text)">Virtual wallets</strong> can represent funds held anywhere — traditional brokers like Trade Republic or XTB, or any other account — with pair data sourced from Tiingo and other providers. Marubozu is a tracker: no order execution is possible from within the platform. Future updates will include automatic import of open positions from connected crypto exchanges.
+                    Marubozu supports two wallet types. <strong style="color:var(--text)">Crypto exchange wallets</strong> connect to Binance, KuCoin, Bitget, MEXC or Bitunix for pair data and balance tracking. <strong style="color:var(--text)">Virtual wallets</strong> can represent funds held anywhere — traditional brokers like Trade Republic or XTB, or any other account — with pair data sourced from Tiingo and other providers. Marubozu is a tracker: no order execution is possible from within the platform. Future updates will include automatic import of open positions from connected crypto exchanges.
                 </p>
             </details>
 
@@ -2315,8 +2316,8 @@
                 <p style="margin-top:16px; font-size:0.9rem; color:var(--muted); line-height:1.7;">
                     Unlike Tradervue or TraderSync which focus primarily on trade logging and statistics, Marubozu adds
                     three layers that most trading journals lack: a macro dashboard for economic cycle context, a multi-exchange
-                    wallet tracker for crypto traders, and a behavioral discipline system with checklists, streaks and
-                    compliance tracking. It is designed as a complete trading hub rather than a standalone journal.
+                    wallet tracker for crypto traders, and a behavioral discipline system built on pre-trade checklists, with streaks and
+                    compliance tracking coming soon. It is designed as a complete trading hub rather than a standalone journal.
                 </p>
             </details>
 
@@ -2350,7 +2351,7 @@
                     <span class="faq-icon" style="color:var(--orange); font-size:1.2rem; margin-left:16px; flex-shrink:0;">+</span>
                 </summary>
                 <p style="margin-top:16px; font-size:0.9rem; color:var(--muted); line-height:1.7;">
-                    No. Marubozu is a trade tracker and journal, not a trading terminal. You cannot place, modify or cancel orders from within the platform. All trades are logged manually. Future updates will include automatic import of open positions from connected crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitnuix), but execution will remain outside Marubozu.
+                    No. Marubozu is a trade tracker and journal, not a trading terminal. You cannot place, modify or cancel orders from within the platform. All trades are logged manually. Future updates will include automatic import of open positions from connected crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitunix), but execution will remain outside Marubozu.
                 </p>
             </details>
 
@@ -2376,7 +2377,7 @@
             <div class="success-msg" id="success2" style="width:100%;margin-top:0">
                 <span>✓</span> Check your inbox — we sent you a confirmation email. Click the link to secure your spot.
             </div>
-            <p class="waitlist-note" style="margin-top:12px">Free during beta · No credit card required</p>
+            <p class="waitlist-note" style="margin-top:12px">7-day free trial · No credit card required</p>
         </div>
     </div>
 
