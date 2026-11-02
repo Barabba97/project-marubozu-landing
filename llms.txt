@@ -10,21 +10,26 @@ Marubozu is a web platform for active traders who want to journal their trades, 
 
 - **Trade Journal**: Rich-text journal with checklist, mood tracking, timeframe tags, and multi-execution support (entries, scale-ins, partial take profits).
 - **Analytics Dashboard**: Win rate, profit factor, equity curve, drawdown, average R:R — behavior linked to outcomes.
-- **Multi-Exchange Wallet**: Two wallet types supported. **Crypto exchange wallets** connect to Binance, KuCoin, Bitget, MEXC or Bitnuix — these exchanges are also used for pair retrieval and are the target for future automatic trade import features. **Virtual wallets** can represent funds held on any platform: traditional brokers (Trade Republic, XTB, etc.), banks, or any other account. For virtual wallets, pair data is sourced from Tiingo, Metal Sentinel, ExchangeRate-API, FRED and other providers depending on asset class. Marubozu is a tracker — no order execution is possible from within the platform.
+- **Multi-Exchange Wallet**: Two wallet types supported. **Crypto exchange wallets** connect to Binance, KuCoin, Bitget, MEXC or Bitunix — these exchanges are also used for pair retrieval and are the target for future automatic trade import features. **Virtual wallets** can represent funds held on any platform: traditional brokers (Trade Republic, XTB, etc.), banks, or any other account. For virtual wallets, pair data is sourced from Tiingo, Metal Sentinel, ExchangeRate-API, FRED and other providers depending on asset class. Marubozu is a tracker — no order execution is possible from within the platform.
 - **Macro Dashboard**: Economic cycle detection, intermarket correlations, and money flow by asset class.
 - **Personal Library & Docs**: Research, macro thesis, and past studies organized in folders; quick notes always one click away.
 - **Custom Checklists**: Pre-trade checklists applied to every trade to enforce discipline under pressure.
 - **Discipline & Streaks** *(coming soon)*: Daily journaling streaks and rule compliance tracking.
 - **Economic Calendar** *(coming soon)*: CPI, FOMC, NFP correlated with trade entries.
 - **AI Journal Assistant** *(coming soon)*: Answers questions from your own trading history.
+- **TradingView alert bridge** *(coming soon)*: TradingView alerts logged as notes in your journal, so you can review the setups you saw and how you traded them.
 
 ## Pricing
 
-Free 7-day trial. Subscription required after trial.
+Marubozu is currently in beta. Join the waitlist at https://marubozu.trade/#waitlist.
+
+- **Free trial**: 7 days, no credit card required.
+- **Founding Members**: everyone who joins the waitlist before public launch can lock in Pro at €14/month (€134/year) for life. Founding access is only available before launch.
+- **Standard plans after launch**: Core €14/month or €134/year; Pro €24/month or €230/year.
 
 ## Target Users
 
-Active retail traders in crypto, forex, and equities — including traders using crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitnuix) and traditional brokers (Trade Republic, XTB, etc.) — who want a unified system to track all positions, improve consistency, discipline, and edge over time. Marubozu is a tracker: no order execution is possible from within the platform.
+Active retail traders in crypto, forex, and equities — including traders using crypto exchanges (Binance, KuCoin, Bitget, MEXC, Bitunix) and traditional brokers (Trade Republic, XTB, etc.) — who want a unified system to track all positions, improve consistency, discipline, and edge over time. Marubozu is a tracker: no order execution is possible from within the platform.
 
 ## Technology
 
