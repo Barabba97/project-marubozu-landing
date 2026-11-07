@@ -27,6 +27,8 @@ Marubozu is currently in beta. Join the waitlist at https://marubozu.trade/#wait
 - **Free trial**: 7 days, no credit card required.
 - **Founding Members**: everyone who joins and confirms the waitlist while the founding window is open (before public launch) can subscribe to Pro at a founding price of €14/month or €134/year, fixed for life, including future Pro features. Founding status concerns the price and is kept after cancelling; access to Pro requires an active subscription. Founding status is personal and non-transferable.
 - **Standard plans after launch**: Core €14/month or €134/year; Pro €24/month or €230/year.
+  - **Core**: journal, notes & documents with up to 3 images each (a trade journal counts as one item, all sections together).
+  - **Pro**: unlimited images in journal, notes & documents.
 
 ## Target Users
 
