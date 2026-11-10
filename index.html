@@ -2835,6 +2835,9 @@
                     maxCandles = Math.ceil(W / step) + 3;
                     while (candles.length < maxCandles) candles.unshift(fullCandle());
                     if (candles.length > maxCandles) candles.splice(0, candles.length - maxCandles);
+                    // Always keep a live candle so the layout is identical from the first frame on
+                    // (at progress 0 it sits at x = W, just off-screen).
+                    if (!live) { live = newCandle(); tick = 0; progress = 0; }
                     computeRange(true);
                     draw();
                 }
@@ -2887,10 +2890,15 @@
                     var target = Math.min(TICKS, Math.floor(progress * TICKS));
                     while (tick < target) { tickCandle(live); tick++; }
                     if (progress >= 1) {
+                        // Hand over straight to the next live candle in the same frame: a frame
+                        // without a live candle shifts the whole row right by one step (visible jump).
                         candles.push(live);
-                        live = null;
-                        progress = 0;
                         if (candles.length > maxCandles) candles.shift();
+                        live = newCandle();
+                        tick = 0;
+                        progress = Math.max(0, progress - 1);   // carry the overflow
+                        target = Math.min(TICKS, Math.floor(progress * TICKS));
+                        while (tick < target) { tickCandle(live); tick++; }
                     }
                     computeRange(false);
                     lo += (loT - lo) * 0.06;
