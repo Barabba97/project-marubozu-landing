@@ -84,7 +84,7 @@
                 "name": "Marubozu",
                 "alternateName": "Marubozu Trading Hub",
                 "url": "https://marubozu.trade/",
-                "description": "Marubozu is a web-based trading journal and performance analytics platform for active retail traders in crypto, forex, equities and futures. It includes a trade journal with checklist and mood tracking, analytics dashboard, wallet tracker (crypto exchange wallets for Binance, KuCoin, Bitget, MEXC, Bitunix and virtual wallets for traditional brokers such as Trade Republic or XTB), macro economic dashboard, and behavioral analytics and a discipline system with journaling streaks (coming soon). Marubozu is a tracker — no trade execution from within the platform.",
+                "description": "Marubozu is a web-based trading journal and performance analytics platform for active retail traders in crypto, forex, equities and futures. It includes a trade journal with checklist and mood tracking, analytics dashboard, wallet tracker (crypto exchange wallets for Binance, KuCoin, Bitget, MEXC, Bitunix and virtual wallets for traditional brokers such as Trade Republic or XTB), macro economic dashboard, economic calendar, per-trade macro context in the journal (Pro), and behavioral analytics and a discipline system with journaling streaks (coming soon). Marubozu is a tracker — no trade execution from within the platform.",
                 "applicationCategory": "FinanceApplication",
                 "applicationSubCategory": "Trading Journal",
                 "operatingSystem": "Web, Any modern browser",
@@ -115,6 +115,7 @@
                 ],
                 "featureList": [
                     "Trading Journal with rich-text editor, checklist, mood tracking and timeframe tags",
+                    "Macro context in each trade's journal (Pro): economic cycle phase at open and close, moves of the dollar index, SPY, QQQ, gold, oil and 2- and 10-year Treasury yields from open to close, high-impact events within 3 days of opening, and the trader's own Risk-on / Neutral / Risk-off read",
                     "Multiple trade executions per journal entry — entries, scale-ins, partial take profits",
                     "Analytics Dashboard with win rate, profit factor, equity curve, drawdown and R:R",
                     "Crypto Exchange Wallets for Binance, KuCoin, Bitget, MEXC and Bitunix; Virtual Wallets for traditional brokers (Trade Republic, XTB, etc.) with pair data from Tiingo and other providers",
@@ -122,7 +123,7 @@
                     "Custom Pre-Trade Checklists",
                     "Personal Library and Notes for research and macro thesis",
                     "Discipline and Streak System (coming soon)",
-                    "Economic Calendar with CPI, FOMC, NFP and other macro releases, correlated with trade entries (coming soon)",
+                    "Economic Calendar with macro releases and their times, market sessions, holidays, personal events, and trades with daily PnL; Pro flags trades opened within 2 hours of CPI, NFP or FOMC",
                     "AI Journal Assistant trained on personal trading history (coming soon)"
                 ],
                 "screenshot": [
@@ -342,6 +343,39 @@
             padding: 130px 5% 80px;
             position: relative;
             overflow: hidden;
+        }
+
+        /* animated candlestick background (decorative, drawn by JS after load) */
+        .hero {
+            isolation: isolate;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            /* dim the centre column where the copy sits, fade out at the bottom edge */
+            -webkit-mask-image: radial-gradient(ellipse 55% 50% at 50% 52%, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .25) 45%, #000 100%), linear-gradient(to bottom, #000 75%, transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image: radial-gradient(ellipse 55% 50% at 50% 52%, rgba(0, 0, 0, .25) 0%, rgba(0, 0, 0, .25) 45%, #000 100%), linear-gradient(to bottom, #000 75%, transparent 100%);
+            mask-composite: intersect;
+        }
+
+        .hero-bg.ready {
+            opacity: 1;
+        }
+
+        /* phones: the copy fills most of the width, so dim a narrower centre and let the edges show */
+        @media (max-width: 640px) {
+            .hero-bg {
+                -webkit-mask-image: radial-gradient(ellipse 42% 40% at 50% 52%, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .3) 35%, #000 100%), linear-gradient(to bottom, #000 75%, transparent 100%);
+                mask-image: radial-gradient(ellipse 42% 40% at 50% 52%, rgba(0, 0, 0, .3) 0%, rgba(0, 0, 0, .3) 35%, #000 100%), linear-gradient(to bottom, #000 75%, transparent 100%);
+            }
         }
 
         /* radial glow bg */
@@ -1768,6 +1802,7 @@
 
     <!-- HERO -->
     <section class="hero" id="home">
+        <canvas class="hero-bg" id="heroBg" aria-hidden="true"></canvas>
         <div class="hero-candles">
             <div class="candle candle-red">
                 <div class="wick" style="height:10px"></div>
@@ -1984,7 +2019,7 @@
             <div class="feature-card">
                 <div class="feature-icon">📝</div>
                 <h3>Trade Journal</h3>
-                <p>Rich-text journal with checklist, mood tracking and timeframe tags. Log multiple executions per trade — entries, scale-ins, partial take profits. Build your trading memory trade by trade.</p>
+                <p>Rich-text journal with checklist, mood tracking and timeframe tags. Log multiple executions per trade — entries, scale-ins, partial take profits — or clone a trade as the starting point for a new one. Build your trading memory trade by trade.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📂</div>
@@ -2000,7 +2035,7 @@
                 <div class="feature-icon">🌐</div>
                 <h3>Macro Dashboard & COT Insights</h3>
                 <p>Economic cycle detection, money flow by asset class, intermarket correlations, and institutional <strong>COT (Commitment of Traders)</strong> net positioning reports — so you always trade
-                    with the macro context in mind.</p>
+                    with the macro context in mind. With Pro, every trade's journal also shows the macro context of that trade.</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📈</div>
@@ -2022,8 +2057,9 @@
             </div>
             <div class="feature-card">
                 <div class="feature-icon">📅</div>
-                <h3>Economic Calendar <span class="badge-soon">Soon</span></h3>
-                <p>CPI, FOMC, NFP correlated with your trade entries. Never get caught off-guard by a macro event again.
+                <h3>Economic Calendar</h3>
+                <p>Macro releases with their times, market sessions and holidays, your personal events, and your trades with
+                    daily PnL — in one calendar. Pro flags trades opened within ±2h of CPI, NFP or an FOMC decision.
                 </p>
             </div>
             <div class="feature-card">
@@ -2067,7 +2103,7 @@
                 <div class="step-num">03</div>
                 <div class="step-content">
                     <h3>Close with context</h3>
-                    <p>Record exit, PnL, fees and close reason. <strong>Macro snapshot at close</strong> <span class="badge-soon">Soon</span> will save the macro context at the time of close — so you can always look back and know what the market was doing when you exited.</p>
+                    <p>Record exit, PnL, fees and close reason. With Pro, the <strong>Macro context</strong> card shows the economic cycle phase at open and close, how the dollar index, SPY, QQQ, gold, oil and the 2- and 10-year Treasury yields moved during the trade, and high-impact events within ±3 days of opening. Add your own read — Risk-on, Neutral or Risk-off — with a short note. It's rebuilt from the trade dates, so it works on past trades too.</p>
                 </div>
             </div>
             <div class="step">
@@ -2221,8 +2257,9 @@
                     <li><span class="feat-icon">✓</span> Unlimited images in journal, notes &amp; documents</li>
                     <li><span class="feat-icon">✓</span> Analytics dashboard</li>
                     <li><span class="feat-icon">✓</span> Macro dashboard</li>
+                    <li><span class="feat-icon">✓</span> Macro context in every trade's journal</li>
+                    <li><span class="feat-icon">✓</span> Economic calendar</li>
                     <li><span class="feat-icon">✓</span> AI journal assistant (coming soon)</li>
-                    <li><span class="feat-icon">✓</span> Economic calendar (coming soon)</li>
                     <li><span class="feat-icon">✓</span> Discipline & streak system (coming soon)</li>
                     <li><span class="feat-icon">✓</span> Behavioral analytics (coming soon)</li>
                 </ul>
@@ -2721,6 +2758,187 @@
                     : el.dataset.monthly;
             });
         }); }
+    </script>
+    <script>
+        // Hero background: stylised candlesticks that slowly form and scroll left.
+        // Decorative only (random walk, no market data). Capped at ~30 fps, paused when
+        // the tab is hidden or the hero is off-screen, static frame with reduced motion.
+        (function () {
+            var canvas = document.getElementById('heroBg');
+            var hero = document.getElementById('home');
+            if (!canvas || !hero || !canvas.getContext) return;
+
+            function init() {
+                var ctx = canvas.getContext('2d');
+                if (!ctx) return;
+                var css = getComputedStyle(document.documentElement);
+                var GREEN = (css.getPropertyValue('--green') || '#3a9e4f').trim();
+                var RED = (css.getPropertyValue('--red') || '#c0392b').trim();
+                var ALPHA = 0.22;           // candle opacity (CSS mask dims the centre further); 0.30 on phones
+                var FRAME_MS = 1000 / 30;   // frame cap
+                var CANDLE_MS = 2200;       // time to form one candle
+                var TICKS = 12;             // price updates per candle
+                var reduce = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+
+                var W = 0, H = 0, dpr = 1, cw = 12, gap = 7, step = 19, maxCandles = 0;
+                var candles = [], price = 100, trend = 0, trendLeft = 0, vol = 0.6;
+                var live = null, tick = 0, progress = 0;
+                var lo = 0, hi = 1, loT = 0, hiT = 1;
+                var raf = 0, last = 0, onScreen = true;
+
+                function rnd(a, b) { return a + Math.random() * (b - a); }
+                function gauss() { return (Math.random() + Math.random() + Math.random() - 1.5) * 1.15; }
+
+                // Random walk with occasional trending regimes.
+                function nextMove() {
+                    if (trendLeft-- <= 0) {
+                        trend = Math.random() < 0.55 ? rnd(-0.18, 0.18) : 0;
+                        vol = rnd(0.35, 0.9);
+                        trendLeft = Math.floor(rnd(8, 30)) * TICKS;
+                    }
+                    // mean reversion keeps the series in a sane range
+                    var mr = (100 - price) * 0.002;
+                    price = Math.max(20, price + trend + mr + gauss() * vol);
+                    return price;
+                }
+                function newCandle() {
+                    var o = price;
+                    return { o: o, h: o, l: o, c: o };
+                }
+                function tickCandle(c) {
+                    var p = nextMove();
+                    c.c = p;
+                    if (p > c.h) c.h = p;
+                    if (p < c.l) c.l = p;
+                }
+                function fullCandle() {
+                    var c = newCandle();
+                    for (var i = 0; i < TICKS; i++) tickCandle(c);
+                    // a touch of extra wick
+                    c.h += Math.abs(gauss()) * vol * 0.6;
+                    c.l -= Math.abs(gauss()) * vol * 0.6;
+                    return c;
+                }
+
+                function resize() {
+                    var r = hero.getBoundingClientRect();
+                    dpr = Math.min(window.devicePixelRatio || 1, 2);
+                    W = Math.max(1, Math.round(r.width));
+                    H = Math.max(1, Math.round(r.height));
+                    canvas.width = Math.round(W * dpr);
+                    canvas.height = Math.round(H * dpr);
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    ALPHA = W <= 640 ? 0.30 : 0.22;
+                    cw = W < 600 ? 8 : 12;
+                    gap = W < 600 ? 5 : 7;
+                    step = cw + gap;
+                    maxCandles = Math.ceil(W / step) + 3;
+                    while (candles.length < maxCandles) candles.unshift(fullCandle());
+                    if (candles.length > maxCandles) candles.splice(0, candles.length - maxCandles);
+                    computeRange(true);
+                    draw();
+                }
+
+                function computeRange(snap) {
+                    var mn = Infinity, mx = -Infinity, all = live ? candles.concat([live]) : candles;
+                    for (var i = 0; i < all.length; i++) {
+                        if (all[i].l < mn) mn = all[i].l;
+                        if (all[i].h > mx) mx = all[i].h;
+                    }
+                    var pad = (mx - mn) * 0.08 + 0.5;
+                    loT = mn - pad; hiT = mx + pad;
+                    if (snap) { lo = loT; hi = hiT; }
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, W, H);
+                    // price band: 18%..82% of the hero height
+                    var top = H * 0.18, band = H * 0.64, span = (hi - lo) || 1;
+                    function y(v) { return top + (hi - v) / span * band; }
+                    var all = live ? candles.concat([live]) : candles;
+                    var shift = progress * step;        // smooth left scroll while the live candle forms
+                    var x0 = W - all.length * step + step - shift;
+                    ctx.globalAlpha = ALPHA;
+                    for (var pass = 0; pass < 2; pass++) {
+                        ctx.fillStyle = pass ? RED : GREEN;
+                        ctx.beginPath();
+                        for (var i = 0; i < all.length; i++) {
+                            var c = all[i], up = c.c >= c.o;
+                            if (up === !!pass) continue;
+                            var x = x0 + i * step;
+                            if (x + cw < 0 || x > W) continue;
+                            var yo = y(c.o), yc = y(c.c), yh = y(c.h), yl = y(c.l);
+                            var bt = Math.min(yo, yc), bh = Math.max(1.5, Math.abs(yc - yo));
+                            ctx.rect(x, bt, cw, bh);                              // body
+                            ctx.rect(x + cw / 2 - 0.75, yh, 1.5, Math.max(0, yl - yh)); // wick
+                        }
+                        ctx.fill();
+                    }
+                    ctx.globalAlpha = 1;
+                }
+
+                function frame(now) {
+                    raf = requestAnimationFrame(frame);
+                    if (now - last < FRAME_MS - 4) return;  // tolerance so 60 Hz displays land on every 2nd frame
+                    var dt = Math.min(now - last, 100);   // no jump after a pause
+                    last = now;
+                    if (!live) { live = newCandle(); tick = 0; progress = 0; }
+                    progress += dt / CANDLE_MS;
+                    var target = Math.min(TICKS, Math.floor(progress * TICKS));
+                    while (tick < target) { tickCandle(live); tick++; }
+                    if (progress >= 1) {
+                        candles.push(live);
+                        live = null;
+                        progress = 0;
+                        if (candles.length > maxCandles) candles.shift();
+                    }
+                    computeRange(false);
+                    lo += (loT - lo) * 0.06;
+                    hi += (hiT - hi) * 0.06;
+                    draw();
+                }
+
+                function shouldRun() { return !reduce.matches && !document.hidden && onScreen; }
+                function update() {
+                    if (shouldRun()) {
+                        if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+                    } else if (raf) {
+                        cancelAnimationFrame(raf);
+                        raf = 0;
+                    }
+                }
+
+                resize();
+                canvas.classList.add('ready');
+
+                if ('ResizeObserver' in window) {
+                    var rt = 0;
+                    new ResizeObserver(function () {
+                        clearTimeout(rt);
+                        rt = setTimeout(resize, 120);
+                    }).observe(hero);
+                } else {
+                    window.addEventListener('resize', resize);
+                }
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver(function (entries) {
+                        onScreen = entries[0].isIntersecting;
+                        update();
+                    }).observe(hero);
+                }
+                document.addEventListener('visibilitychange', update);
+                if (reduce.addEventListener) reduce.addEventListener('change', function () { update(); draw(); });
+                update();
+            }
+
+            // Defer until after first paint / load so it never competes with the content.
+            function schedule() {
+                if ('requestIdleCallback' in window) requestIdleCallback(init, { timeout: 1500 });
+                else setTimeout(init, 200);
+            }
+            if (document.readyState === 'complete') schedule();
+            else window.addEventListener('load', schedule);
+        })();
     </script>
 </body>
 

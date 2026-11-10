@@ -8,15 +8,16 @@ Marubozu is a web platform for active traders who want to journal their trades, 
 
 ## Core Features
 
-- **Trade Journal**: Rich-text journal with checklist, mood tracking, timeframe tags, and multi-execution support (entries, scale-ins, partial take profits).
+- **Trade Journal**: Rich-text journal with checklist, mood tracking, timeframe tags, and multi-execution support (entries, scale-ins, partial take profits). A trade can be cloned as the starting point for a new one.
 - **Analytics Dashboard**: Win rate, profit factor, equity curve, drawdown, average R:R. Mood and checklist completion are logged in the journal for every trade.
 - **Behavioral Analytics** *(coming soon)*: Mood, checklist completion and macro environment correlated with trade results.
 - **Multi-Exchange Wallet**: Two wallet types supported. **Crypto exchange wallets** connect to Binance, KuCoin, Bitget, MEXC or Bitunix — these exchanges are also used for pair retrieval. **Virtual wallets** can represent funds held on any platform: traditional brokers (Trade Republic, XTB, etc.), banks, or any other account. For virtual wallets, pair data is sourced from Tiingo, Metal Sentinel, ExchangeRate-API, FRED and other providers depending on asset class. Marubozu is a tracker — no order execution is possible from within the platform.
 - **Macro Dashboard**: Economic cycle detection, intermarket correlations, and money flow by asset class.
+- **Macro Context in the Journal** *(Pro)*: Each trade's journal has a Macro context card: economic cycle phase at open and close; how the dollar index, SPY, QQQ, gold, oil and the 2- and 10-year Treasury yields moved from open to close; high-impact events within ±3 days of opening. Details on demand: 1D/1W/1M changes, macro indicators (counted only once published, with a conservative publication delay) and sources. Traders can record their own macro read (Risk-on / Neutral / Risk-off) with a short note; a read written after the close is flagged. The context is reconstructed from the trade dates, so it also works on past trades (with less data before 2026).
 - **Personal Library & Docs**: Research, macro thesis, and past studies organized in folders; quick notes always one click away.
 - **Custom Checklists**: Pre-trade checklists applied to every trade to enforce discipline under pressure.
 - **Discipline & Streaks** *(coming soon)*: Daily journaling streaks and rule compliance tracking.
-- **Economic Calendar** *(coming soon)*: CPI, FOMC, NFP and other macro releases, correlated with trade entries.
+- **Economic Calendar**: Macro events with release times, market sessions, market holidays, personal events, and your trades with daily PnL. Pro adds a signal on trades opened within ±2 hours of CPI, NFP or an FOMC decision.
 - **AI Journal Assistant** *(coming soon)*: Answers questions from your own trading history.
 - **TradingView alert bridge** *(coming soon)*: TradingView alerts logged as notes in your journal, so you can review the setups you saw and how you traded them.
 
@@ -28,7 +29,7 @@ Marubozu is currently in beta. Join the waitlist at https://marubozu.trade/#wait
 - **Founding Members**: everyone who joins and confirms the waitlist while the founding window is open (before public launch) can subscribe to Pro at a founding price of €14/month or €134/year, fixed for life, including future Pro features. Founding status concerns the price and is kept after cancelling; access to Pro requires an active subscription. Founding status is personal and non-transferable.
 - **Standard plans after launch**: Core €14/month or €134/year; Pro €24/month or €230/year.
   - **Core**: journal, notes & documents with up to 3 images each (a trade journal counts as one item, all sections together).
-  - **Pro**: unlimited images in journal, notes & documents.
+  - **Pro**: unlimited images in journal, notes & documents; macro context in the journal; calendar signal for trades opened near CPI, NFP or FOMC.
 
 ## Target Users
 
